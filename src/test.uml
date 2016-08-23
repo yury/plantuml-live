@@ -1,0 +1,11 @@
+@startuml
+
+
+Nick -> Yury: Hello
+Nick -> Yury: Hello2
+Nick -> Yury: Hello22
+
+Привет -> Хеело: Gksjd
+
+
+@enduml

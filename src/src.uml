@@ -1,0 +1,7 @@
+@startuml
+
+AlexU -> Yury: Hello
+AlexU -> Yury: Hello
+AlexU -> Yury: Hello
+
+@enduml

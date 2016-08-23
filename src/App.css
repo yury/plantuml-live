@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  padding: 2em;
+  background: white;
+}
+
+.App-docs {
+  float: right;
+  font-size: small;
+}
