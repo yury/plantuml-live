@@ -12,7 +12,8 @@ ENV VERSION=v6.4.0 NPM_VERSION=3
 # ENV CONFIG_FLAGS="--without-npm" RM_DIRS=/usr/include
 # ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libgcc libstdc++" RM_DIRS=/usr/include
 
-RUN apk add --no-cache curl make gcc g++ python linux-headers paxctl libgcc libstdc++ gnupg && \
+
+RUN apk add --no-cache graphviz curl make gcc g++ python linux-headers paxctl libgcc libstdc++ gnupg && \
   gpg --keyserver ha.pool.sks-keyservers.net --recv-keys \
     9554F04D7259F04124DE6B476D5A82AC7E37093B \
     94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
@@ -41,19 +42,15 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers paxctl libgcc libs
     npm install -g npm@${NPM_VERSION} && \
     find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf; \
   fi && \
-  apk del curl make gcc g++ python linux-headers paxctl gnupg ${DEL_PKGS} && \
   rm -rf /etc/ssl /node-${VERSION}.tar.gz /SHASUMS256.txt.asc /node-${VERSION} ${RM_DIRS} \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp /root/.gnupg \
-    /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html
-
-RUN mkdir -p /app
-WORKDIR /app
-RUN \
-  apk add --no-cache graphviz wget && \
-  wget 'http://downloads.sourceforge.net/project/plantuml/plantuml.8037.jar?r=http%3A%2F%2Fplantuml.com%2Fdownload.html&ts=1459166895&use_mirror=jaist' -O plantuml.jar && \
-  apk del wget
+    /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html && \
+  mkdir -p /app && \
+  curl -o /app/plantuml.jar -L 'http://downloads.sourceforge.net/project/plantuml/plantuml.8046.jar' && \
+  apk del curl make gcc g++ python linux-headers paxctl gnupg ${DEL_PKGS}
 
 ENV LANG en_US.UTF-8
+WORKDIR /app
 
 COPY package.json /app/
 RUN npm install
