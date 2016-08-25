@@ -74,7 +74,7 @@ module.exports = {
       {
         test: /\.uml$/,
         include: [paths.appSrc, paths.appNodeModules],
-        loader: 'babel?presets[]=es2015,presets[]=react!svg-react!plantuml?no-docker&format=svg'
+        loader: 'raw!plantuml?no-docker&format=svg'
       },
       {
         test: /\.svg$/,

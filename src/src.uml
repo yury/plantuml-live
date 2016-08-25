@@ -1,7 +1,10 @@
 @startuml
 
-AlexU -> Yury: Hello
-AlexU -> Yury: Hello
-AlexU -> Yury: Hello
+start
+
+
+:write your **diagrams** in src.uml;
+
+stop
 
 @enduml

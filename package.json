@@ -45,9 +45,10 @@
   },
   "dependencies": {
     "plantuml-loader": "^1.0.0",
+    "raw-loader": "^0.5.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "svg-react-loader": "^0.3.7"
+    "react-svg-inline": "^1.2.0"
   },
   "scripts": {
     "start": "node ./scripts/start.js",
